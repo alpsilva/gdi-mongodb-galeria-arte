@@ -107,6 +107,7 @@ db.autores.find(filtro);
 
 db.funcionarios.findOne();
 
+
 16--Cria uma nova collection usando mapReduce, chamada preco_total_das_obras, que relaciona:
 --  1. O id de um autor.
 --  2. A soma dos preços de todas as obras desse autor que a galeria possui.
@@ -119,3 +120,21 @@ db.obras.mapReduce(
         out: "preco_total_das_obras"
     }
 );
+
+
+17-- Retorna os _ids dos autores e o campo "fomacao" preenchido com "Academia de Julian"
+---- apenas para aqueles que tiverem essa formação.
+
+db.autores.aggregate([
+   {
+      $project: {
+         formacao: {
+            $filter: {
+               input: "$formacao",
+               as: "form",
+               cond: { $eq: [ "$$form", "Academia de Julian" ] }
+            }
+         }
+      }
+   }
+]);

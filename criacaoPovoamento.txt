@@ -14,7 +14,7 @@ db.funcionarios.insertMany([
 
 db.artistas.insertMany([
     {id: 1, nome: "Paulo Picazzo", pais_origem: "Espanha"},
-    {id: 2, nome: "Romero Britadeira", pais_origem: "Brasil", email: "romebrit@email.com", formacao: "UNICAP"},
+    {id: 2, nome: "Romero Britadeira", pais_origem: "Brasil", email: "romebrit@email.com", formacao: ["UNICAP"]},
     {id: 3, nome: "Tarsisia do Armorial", pais_origem: "Brasil", formacao: ["Academia de Lhote"]},
     {id: 4, nome: "Francisco Drennanb", pais_origem: "Brasil"},
     {id: 5, nome: "Leonardo Dasvinte", pais_origem: "Itália"}
