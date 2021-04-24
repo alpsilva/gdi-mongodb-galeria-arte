@@ -1,0 +1,29 @@
+--Selecionando/criando o banco de dados
+
+use galeriaArte;
+
+--Criando/povoando as collections
+
+db.funcionarios.insertMany([
+    {},
+    {},
+    {},
+    {},
+    {}
+]);
+
+db.autores.insertMany([
+    {},
+    {},
+    {},
+    {},
+    {}
+]);
+
+db.obras.insertMany([
+    {},
+    {},
+    {},
+    {},
+    {}
+]);
