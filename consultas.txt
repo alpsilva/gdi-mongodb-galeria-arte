@@ -63,3 +63,18 @@ db.obras.find({descricao: {$exists: true}});
 db.autores.find( { $where: function() {
    return (hex_md5(this.nome) == "3adccfd50ef832ddcf8715a2d8464e14")
 } } );
+
+
+--Retorna as obras e seus autores
+
+db.obras.aggregate([
+    {
+        $lookup:
+        {
+            from: "autores",
+            localField: "autorID",
+            foreignField: "id",
+            as: "autor"
+        }
+    }
+]).pretty();
