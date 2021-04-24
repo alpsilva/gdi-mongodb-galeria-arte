@@ -10,10 +10,10 @@ Atributos principais:
     -Nome;  
     -Tipo (pintura, arte plástica, escultura, etc);  
     -Preço;  
-    -Gênero (Art-noveau, arte deco, cubismo, expressionismo, clássico, etc);  
     -Autor;  
     -Data_criação;   
 Atributos opcionais:  
+    -Gênero (Art-noveau, arte deco, cubismo, expressionismo, clássico, etc);  
     -Descrição;  
 
   
@@ -35,7 +35,6 @@ Autores
 Representa os autores das obras.
 Atributos principais:  
     -Nome;  
-    -Data_nascimento;  
     -País_origem;  
 Atributos opcionais:  
     -Email;  

@@ -5,25 +5,30 @@ use galeriaArte;
 --Criando/povoando as collections
 
 db.funcionarios.insertMany([
-    {},
-    {},
-    {},
-    {},
-    {}
+    {nome: "José Alves", idade: 33, email: "joalvez@email.com", salario: 4500.37, data_contratacao: new Date("2015-02-12"), funcao: "Gerente"},
+    {nome: "Tereza Lima", idade: 37, email: "terezinhalima@email.com", salario: 3198.50 , data_contratacao: new Date("2016-010-02"), funcao: "Avaliador de arte"},
+    {nome: "Juvenal Lucena", idade: 29, email: "jujuvs@email.com", salario: 2500.00, data_contratacao: new Date("2019-03-10"), funcao: "Vendedor", bonus: 1.2},
+    {nome: "Maria Rosângela", idade: 25, email: "mros@email.com", salario: 2500.00, data_contratacao: new Date("2020-07-13"), funcao: "Vendedor", bonus: 1.2},
+    {nome: "Pedro Zacarias", idade: 48, email: "pz@email.com", salario: 1532.00, data_contratacao: new Date("2016-04-24"), funcao: "Funcionário de limpeza"}
 ]);
 
 db.autores.insertMany([
-    {},
-    {},
-    {},
-    {},
-    {}
+    {id: 1, nome: "Paulo Picazzo", pais_origem: "Espanha"},
+    {id: 2, nome: "Romero Britadeira", pais_origem: "Brasil", email: "romebrit@email.com", formacao: "UNICAP"},
+    {id: 3, nome: "Tarsisia do armorial", pais_origem: "Brasil", formacao: ["Academia de Lhote", "Academia de Julian"]},
+    {id: 4, nome: "Francisco Drennanb", pais_origem: "Brasil"},
+    {id: 5, nome: "Leonardo Dasvinte", pais_origem: "Itália"}
 ]);
 
 db.obras.insertMany([
-    {},
-    {},
-    {},
-    {},
-    {}
+    {id: 1, nome: "Monagrossa", tipo: "Pintura", preco: 10299.99, autorID: 5, data_criacao: new Date("1596-07-13")},
+    {id: 2, nome: "O homem vesuviano", tipo: "Pintura", preco: 6299.99, autorID: 5, data_criacao: new Date("1599-05-09")},
+    {id: 3, nome: "Apaboru", tipo: "Pintura", preco: 20100, autorID: 3, data_criacao: new Date("1950-010-20")},
+    {id: 4, nome: "Antisocial 1933", tipo: "Pintura", preco: 20099, autorID: 3, data_criacao: new Date("1951-010-20")},
+    {id: 5, nome: "O falo de Drennanb", tipo: "Escultura", preco: 500000, autorID: 4, data_criacao: new Date("1980-01-07")},
+    {id: 6, nome: "Serpentes de Drennanb", tipo: "Escultura", preco: 120000, autorID: 4, data_criacao: new Date("1985-01-010"), descricao: "Escultura em bronze, constituida de várias peças."},
+    {id: 7, nome: "Guermica", tipo: "Painel", preco: 249000, autorID: 1, data_criacao: new Date("1937-04-26")},
+    {id: 8, nome: "Auto-porta-retrato", tipo: "Pintura", preco: 20000, autorID: 1, data_criacao: new Date("1940-04-26")},
+    {id: 9, nome: "Brita Garden", tipo: "Pintura", preco: 3599.99, autorID: 2, data_criacao: new Date("2000-11-12")},
+    {id: 10, nome: "Mona Gato", tipo: "Pintura", preco: 399.50, autorID: 2, data_criacao: new Date("2004-12-23")}
 ]);
