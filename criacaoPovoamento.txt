@@ -12,7 +12,7 @@ db.funcionarios.insertMany([
     {nome: "Pedro Zacarias", idade: 48, email: "pz@email.com", salario: 1532.00, data_contratacao: new Date("2016-04-24"), funcao: "Funcionário de limpeza"}
 ]);
 
-db.autores.insertMany([
+db.artistas.insertMany([
     {id: 1, nome: "Paulo Picazzo", pais_origem: "Espanha"},
     {id: 2, nome: "Romero Britadeira", pais_origem: "Brasil", email: "romebrit@email.com", formacao: "UNICAP"},
     {id: 3, nome: "Tarsisia do armorial", pais_origem: "Brasil", formacao: ["Academia de Lhote", "Academia de Julian"]},
@@ -32,3 +32,15 @@ db.obras.insertMany([
     {id: 9, nome: "Brita Garden", tipo: "Pintura", preco: 3599.99, autorID: 2, data_criacao: new Date("2000-11-12")},
     {id: 10, nome: "Mona Gato", tipo: "Pintura", preco: 399.50, autorID: 2, data_criacao: new Date("2004-12-23")}
 ]);
+
+--Adcionando o campo em_exibicao para todas as obras
+
+db.obras.updateMany({}, {$set:{em_exibicao: false}});
+
+--Fazendo com que obras que custem menos de 100.000 fiquem com o campo em_exibicao true
+
+db.obras.updateMany({preco: {$lt: 100000}}, {$set:{em_exibicao: true}});
+
+--Mudando o nome da collection "artistas" para "autores"
+
+db.artistas.renameCollection("autores");
