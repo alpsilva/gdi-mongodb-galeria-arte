@@ -15,7 +15,7 @@ db.funcionarios.insertMany([
 db.artistas.insertMany([
     {id: 1, nome: "Paulo Picazzo", pais_origem: "Espanha"},
     {id: 2, nome: "Romero Britadeira", pais_origem: "Brasil", email: "romebrit@email.com", formacao: "UNICAP"},
-    {id: 3, nome: "Tarsisia do armorial", pais_origem: "Brasil", formacao: ["Academia de Lhote", "Academia de Julian"]},
+    {id: 3, nome: "Tarsisia do Armorial", pais_origem: "Brasil", formacao: ["Academia de Lhote"]},
     {id: 4, nome: "Francisco Drennanb", pais_origem: "Brasil"},
     {id: 5, nome: "Leonardo Dasvinte", pais_origem: "Itália"}
 ]);
@@ -44,3 +44,16 @@ db.obras.updateMany({preco: {$lt: 100000}}, {$set:{em_exibicao: true}});
 --Mudando o nome da collection "artistas" para "autores"
 
 db.artistas.renameCollection("autores");
+
+--Adcionando outro autor
+
+db.autores.save(
+    {id: 6, nome: "Vincent van Google", pais_origem: "Holanda"}
+);
+
+--Adcionando mais uma formação na artista "Tarsisia do Armorial", id 3
+
+db.autores.update(
+    {id: 3},
+    {$addToSet: {formacao: "Academia de Julian" }}
+);
