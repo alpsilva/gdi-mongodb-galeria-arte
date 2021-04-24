@@ -1,0 +1,54 @@
+--Consultas dentro do bd galeriaArte
+
+use galeriaArte;
+
+--Retornar todas as obras da galeria, mas apenas com os campos de nome e preço. (PROJECTION)
+
+projection = {_id: 0, nome: 1, preco: 1}
+db.obras.find({}, projection);
+
+
+--Retornar quantas obras existem na galeria
+
+db.obras.count();
+
+
+--Retornar os autores que tenham 2 formações
+
+filtro = {formacao: {$size: 2}};
+db.autores.find(filtro).pretty();
+
+
+--Quantas obras existem de cada tipo (GROUP BY tipo)
+
+db.obras.aggregate(
+    {$group: {_id: '$tipo', quantidade: {$sum:1}}}
+);
+
+
+--Quantas obras, que tenham preço no mínimo 15.000, existem de cada tipo
+
+db.obras.aggregate([
+    {$match: {preco: {$gte: 15000}}},
+    {$group: {_id: '$tipo', quantidade: {$sum:1}}}
+]);
+
+
+--Média de salários dos funcionários da galeria
+
+db.funcionarios.aggregate(
+    {$group: {_id: null, media_salarial: {$avg: '$salario' }}}
+);
+
+
+--A data da obra mais recente da galeria
+
+db.obras.aggregate(
+    {$group : { _id: null, max: { $max : "$data_criacao" }}}
+);
+
+
+--As 3 obras mais caras da galeria
+
+db.obras.find().sort({preco:-1}).limit(3).pretty();
+
