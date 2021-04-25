@@ -13,7 +13,6 @@ Atributos principais:
     -Autor;  
     -Data_criação;   
 Atributos opcionais:  
-    -Gênero (Art-noveau, arte deco, cubismo, expressionismo, clássico, etc);  
     -Descrição;  
 
   

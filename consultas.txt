@@ -1,32 +1,32 @@
-1--Consultas dentro do bd galeriaArte
+--Consultas dentro do bd galeriaArte
 
 use galeriaArte;
 
-2--Retornar todas as obras da galeria, mas apenas com os campos de nome e preço. (PROJECTION)
+1--Retornar todas as obras da galeria, mas apenas com os campos de nome e preço. (PROJECTION)
 
 projection = {_id: 0, nome: 1, preco: 1}
 db.obras.find({}, projection);
 
 
-3--Retornar quantas obras existem na galeria
+2--Retornar quantas obras existem na galeria
 
 db.obras.count();
 
 
-4--Retornar os autores que tenham 2 formações
+3--Retornar os autores que tenham 2 formações
 
 filtro = {formacao: {$size: 2}};
 db.autores.find(filtro).pretty();
 
 
-5--Quantas obras existem de cada tipo (GROUP BY tipo)
+4--Quantas obras existem de cada tipo (GROUP BY tipo)
 
 db.obras.aggregate(
     {$group: {_id: '$tipo', quantidade: {$sum:1}}}
 );
 
 
-6--Quantas obras, que tenham preço no mínimo 15.000, existem de cada tipo
+5--Quantas obras, que tenham preço no mínimo 15.000, existem de cada tipo
 
 db.obras.aggregate([
     {$match: {preco: {$gte: 15000}}},
@@ -34,31 +34,31 @@ db.obras.aggregate([
 ]);
 
 
-7--Média de salários dos funcionários da galeria
+6--Média de salários dos funcionários da galeria
 
 db.funcionarios.aggregate(
     {$group: {_id: null, media_salarial: {$avg: '$salario' }}}
 );
 
 
-8--A data da obra mais recente da galeria
+7--A data da obra mais recente da galeria
 
 db.obras.aggregate(
     {$group : { _id: null, max: { $max : "$data_criacao" }}}
 );
 
 
-9--As 3 obras mais caras da galeria
+8--As 3 obras mais caras da galeria
 
 db.obras.find().sort({preco:-1}).limit(3).pretty();
 
 
-10--Retorna as obras que tenham o campo "descricao"
+9--Retorna as obras que tenham o campo "descricao"
 
 db.obras.find({descricao: {$exists: true}});
 
 
-11--Retorna o autor cujo nome encriptado para hash MD5 seja o mesmo da comparação (é pra retornar o autor leonardo dasvinte)
+10--Retorna o autor cujo nome encriptado para hash MD5 seja o mesmo da comparação (é pra retornar o autor leonardo dasvinte)
 
 db.autores.find( { $where: function() {
    return (hex_md5(this.nome) == "3adccfd50ef832ddcf8715a2d8464e14")
