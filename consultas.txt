@@ -121,6 +121,10 @@ db.obras.mapReduce(
     }
 );
 
+show collections;
+
+db.preco_total_das_obras.find().pretty();
+
 
 17-- Retorna os _ids dos autores e o campo "fomacao" preenchido com "Academia de Julian"
 ---- apenas para aqueles que tiverem essa formação.
