@@ -57,3 +57,10 @@ db.autores.update(
     {id: 3},
     {$addToSet: {formacao: "Academia de Julian" }}
 );
+
+--Removendo o artista "Vincent van Google", de id 6
+
+db.autores.remove(
+    {id: 6},
+    {justOne: true}
+);
